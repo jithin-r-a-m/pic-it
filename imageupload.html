@@ -1,0 +1,68 @@
+<!--<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+    // Connect to database
+    $servername = "localhost";
+    $username = "root";
+    $password = '';
+    $dbname = "project";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // Save image to database
+    $username = $_SESSION["username"];
+    $image = file_get_contents($_FILES["image"]["tmp_name"]);
+    $stmt = $conn->prepare("INSERT INTO images (name, type, data, username) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $_FILES["image"]["name"], $_FILES["image"]["type"], $image, $username);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+?>-->
+
+<html>
+<head>
+	<title>Image Upload</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		/* Responsive image preview */
+		.img-preview {
+			max-width: 100%;
+			height: auto;
+			margin: 10px 0;
+			display: none;
+		}
+		@media screen and (min-width: 768px) {
+			.img-preview {
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data">
+		<input type="file" name="image" onchange="previewImage(event)">
+		<img class="img-preview" id="preview">
+		<input type="submit" name="submit" value="Upload">
+	</form>
+	<script>
+		/* Preview selected image */
+		function previewImage(event) {
+			var input = event.target;
+			var preview = document.getElementById("preview");
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					preview.src = e.target.result;
+				}
+				reader.readAsDataURL(input.files[0]);
+				preview.style.display = "block";
+			} else {
+				preview.src = "";
+				preview.style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>
