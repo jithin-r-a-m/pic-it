@@ -1,61 +1,248 @@
 <html>
-    <title>CONTRIBUTE</title>
-    <head>
-        <link rel="stylesheet"  href="cstyle.css">
-    </head>
-    <body>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+      /*just bg and body style*/
+.container{
+  background: #7f00ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7f00ff, #e100ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+padding-bottom:20px;
+margin-top:10px;
+border-radius:5px;
+}
+.center{
+text-align:center;  
+}
+#top{
+margin-top:20px;  
+}
+.btn-container{
+background:#fff;
+border-radius:5px;
+padding-bottom:20px;
+margin-bottom:20px;
+}
+.white{
+color:white;
+}
+.imgupload{
+color:#1E2832;
+padding-top:40px;
+font-size:7em;
+}
+#namefile{
+color:black;
+}
+h4>strong{
+color:#ff3f3f
+}
+.btn-primary{
+  background: #7f00ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7f00ff, #e100ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #ff3f3f !important;
+border-color: #ff3f3f !important;
+}
 
-        <div class="wrapper">
-            <header>
-              <h1>UPLOAD</h1>
-              <span>username</span>
-            </header>
-            
-           
-            
-            <div class="sections">
-              
-              <section class="active">
-                <input type="text" placeholder="Title" id="title"/>
-                <select id="category">
-                  <option value="summmer">landscape</option>
-                  <option value="winter">potrait</option>
-                  <option value="working">png</option>
-                  <option value="road">square</option>
-                </select>
-                
-                <div class="select-option">
-                  <div class="head">Category</div>
-                  <div class="option"></div>
-                </div>
-                
-                
-                <div class="images">
-                  <div class="pic">
-                    add
-                  </div>
-                </div>
-                
-                
-              </section>
-          
-              <section>
-                <input type="text" placeholder="Topic" id="topic"/>
-                <textarea placeholder="something..." id="msg"></textarea>
-              </section>
-            
-            </div>
-            
-            <footer>
-              <ul>
-                <li><span id="reset">reset</span></li>
-                <li><span id="send">send</span></li>
-              </ul>
-            </footer> 
-            
-          </div>
-          <div class="notification"></div>
-          
-  <script src="conscript.js"></script>
+/*these two are set to not display at start*/
+.imgupload.ok{
+display:none;
+color:green;
+}
+.imgupload.stop{
+display:none;
+color:red;
+}
+
+
+/*this sets the actual file input to overlay our button*/ 
+#fileup{
+opacity: 0;
+-moz-opacity: 0;
+filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+width:200px;
+cursor: pointer;
+position:absolute;
+left: 50%;
+transform: translateX(-50%);
+bottom: 40px;
+height: 50px;
+}
+
+/*switch between input and not active input*/
+#submitbtn{
+  padding:5px 50px;
+  display:none;
+}
+#fakebtn{
+  padding:5px 40px;
+}
+
+
+/*www.emilianocostanzo.com*/
+#sign{
+	color:#1E2832;
+	position:fixed;
+	right:10px;
+	bottom:10px;
+	text-shadow:0px 0px 0px #1E2832;
+	transition:all.3s;
+}
+#sign:hover{
+	color:#1E2832;
+	text-shadow:0px 0px 5px #1E2832;
+}
+
+.popup {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+.popup .popup-content  {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.popup .popup-title {
+  color: #32325d;
+  font-size: 1.8em;
+  line-height: 1.5em;
+  font-weight: 900;
+  margin-top: 0;
+}
+.popup .popup-body {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  color: #6b7c93;
+  font-weight: 500;
+  margin-bottom: 2.1em;
+}
+.popup .popup-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 1em 3em;
+  background-size: 300% 300%;
+  color: white;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  background-image: linear-gradient(to right, #895cf2 0%, #ffabf4 50%, #895cf2 100%);
+  transition: 0.5s;
+}
+
+.popup .popup-button:hover {
+  background-position: right center;
+}
+
+#btn-2 {
+    background-image: repeating-linear-gradient(-45deg, 
+      #7BDFF2 10px 30px,
+      #B2F7EF 30px 50px,
+      #EFF7F6 50px 70px,
+      #F7D6E0 70px 90px,
+      #F2B5D4 90px 110px
+  );
+  color: black;
+}
+
+#btn-2:hover {
+  background-position: 20% center;
+}
+
+    </style>
+  </head>
+  <body>
+   
+
+<div class="container center">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="white">Add your images</h1>
+			<p class="white">Upload your images to the website for others to use it for free</p>
+		</div>
+	</div>
+	
+	<form name="upload" method="post" action="#" enctype="multipart/form-data" accept-charset="utf-8">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 center">
+				<div class="btn-container">
+					<!--the three icons: default, ok file (img), error file (not an img)-->
+					<h1 class="imgupload"><i class="fa fa-file-image-o"></i></h1>
+					<h1 class="imgupload ok"><i class="fa fa-check"></i></h1>
+					<h1 class="imgupload stop"><i class="fa fa-times"></i></h1>
+					<!--this field changes dinamically displaying the filename we are trying to upload-->
+					<p id="namefile">Only pics allowed! (jpg,jpeg,bmp,png)</p>
+					<!--our custom btn which which stays under the actual one-->
+					<button type="button" id="btnup" class="btn btn-primary btn-lg">Browse for your pic!</button>
+					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
+					<input type="file" value="" name="fileup" id="fileup">
+				</div>
+			</div>
+		</div>
+			<!--additional fields-->
+		<div class="row">			
+			<div class="col-md-12">
+				<!--the defauld disabled btn and the actual one shown only if the three fields are valid-->
+				<input type="submit" value="Submit!" class="btn btn-primary" id="submitbtn">
+				<button type="button" class="btn btn-default" disabled="disabled" id="fakebtn">Submit! <i class="fa fa-minus-circle"></i></button>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="popup">
+  <div class="popup-content">
+   
+    <a href="index.html" id="btn-2" class="popup-button">home page</a>
+  </div>  
+</div>  
+</div>
+<script>
+  $('#fileup').change(function(){
+//here we take the file extension and set an array of valid extensions
+    var res=$('#fileup').val();
+    var arr = res.split("\\");
+    var filename=arr.slice(-1)[0];
+    filextension=filename.split(".");
+    filext="."+filextension.slice(-1)[0];
+    valid=[".jpg",".png",".jpeg",".bmp"];
+//if file is not valid we show the error icon, the red alert, and hide the submit button
+    if (valid.indexOf(filext.toLowerCase())==-1){
+        $( ".imgupload" ).hide("slow");
+        $( ".imgupload.ok" ).hide("slow");
+        $( ".imgupload.stop" ).show("slow");
+      
+        $('#namefile').css({"color":"red","font-weight":700});
+        $('#namefile').html("File "+filename+" is not  pic!");
+        
+        $( "#submitbtn" ).hide();
+        $( "#fakebtn" ).show();
+    }else{
+        //if file is valid we show the green alert and show the valid submit
+        $( ".imgupload" ).hide("slow");
+        $( ".imgupload.stop" ).hide("slow");
+        $( ".imgupload.ok" ).show("slow");
+      
+        $('#namefile').css({"color":"green","font-weight":700});
+        $('#namefile').html(filename);
+      
+        $( "#submitbtn" ).show();
+        $( "#fakebtn" ).hide();
+    }
+});
+</script>
   </body>
-  </html>
+</html>
